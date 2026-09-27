@@ -48,7 +48,7 @@ export const CharacterSelect: React.FC<CharacterSelectProps> = ({
             WARRIOR SELECTION
           </h1>
           <p className="text-xs md:text-sm text-neutral-400 uppercase tracking-widest mt-1">
-            Shadow Fight 3 · Legion vs Dynasty Factions
+            Fight Genesis · Tactical Weapon Mastery & Factions
           </p>
         </div>
 

@@ -6,6 +6,7 @@ class SoundEngine {
   private musicGain: GainNode | null = null;
   private musicStep: number = 0;
   private isLowHpTension: boolean = false;
+  private fluteAudio: HTMLAudioElement | null = null;
 
   private initCtx() {
     if (!this.ctx) {
@@ -14,8 +15,8 @@ class SoundEngine {
       this.sfxGain = this.ctx.createGain();
       this.musicGain = this.ctx.createGain();
 
-      this.sfxGain.gain.setValueAtTime(0.7, this.ctx.currentTime);
-      this.musicGain.gain.setValueAtTime(0.25, this.ctx.currentTime);
+      this.sfxGain.gain.setValueAtTime(0.75, this.ctx.currentTime);
+      this.musicGain.gain.setValueAtTime(0.75, this.ctx.currentTime);
 
       this.sfxGain.connect(this.ctx.destination);
       this.musicGain.connect(this.ctx.destination);
@@ -29,8 +30,11 @@ class SoundEngine {
     this.isMuted = muted;
     if (this.ctx && this.sfxGain && this.musicGain) {
       const now = this.ctx.currentTime;
-      this.sfxGain.gain.setValueAtTime(muted ? 0 : 0.7, now);
-      this.musicGain.gain.setValueAtTime(muted ? 0 : 0.25, now);
+      this.sfxGain.gain.setValueAtTime(muted ? 0 : 0.75, now);
+      this.musicGain.gain.setValueAtTime(muted ? 0 : 0.75, now);
+    }
+    if (this.fluteAudio) {
+      this.fluteAudio.volume = muted ? 0 : 0.85;
     }
   }
 
@@ -374,11 +378,81 @@ class SoundEngine {
     this.isLowHpTension = isLowHp;
   }
 
+  private isJapaneseMenuPlaying: boolean = false;
+
+  public unlockAudioContext() {
+    this.initCtx();
+    if (this.fluteAudio && !this.isMuted) {
+      this.fluteAudio.volume = 0.9;
+      this.fluteAudio.play().catch(() => {});
+    }
+  }
+
+  // Authentic Studio Recorded Japanese Shakuhachi Bamboo Flute
+  public startJapaneseMenuMusic() {
+    this.isJapaneseMenuPlaying = true;
+    this.stopCombatMusic();
+    this.initCtx();
+
+    if (!this.fluteAudio) {
+      this.fluteAudio = new Audio('/audio/japanese_flute.mp3');
+      this.fluteAudio.loop = true;
+      this.fluteAudio.preload = 'auto';
+    }
+
+    this.fluteAudio.volume = this.isMuted ? 0 : 0.9;
+
+    const playPromise = this.fluteAudio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Handled automatically on first user click
+      });
+    }
+  }
+
+  public stopJapaneseMenuMusic() {
+    this.isJapaneseMenuPlaying = false;
+    if (this.fluteAudio) {
+      this.fluteAudio.pause();
+    }
+  }
+
+  // Zen Temple Bell / Singing Bowl (Rin Gong)
+  public playZenBell(freq: number = 220) {
+    if (!this.ctx || !this.musicGain || this.isMuted) return;
+
+    const now = this.ctx.currentTime;
+    const overtones = [
+      { ratio: 1.0, vol: 0.42, decay: 4.5 },
+      { ratio: 2.76, vol: 0.22, decay: 3.2 },
+      { ratio: 5.4, vol: 0.1, decay: 2.0 },
+      { ratio: 8.9, vol: 0.04, decay: 1.2 }
+    ];
+
+    overtones.forEach(({ ratio, vol, decay }) => {
+      if (!this.ctx || !this.musicGain) return;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq * ratio, now);
+
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.linearRampToValueAtTime(vol, now + 0.015);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + decay);
+
+      osc.connect(gain);
+      gain.connect(this.musicGain);
+
+      osc.start(now);
+      osc.stop(now + decay);
+    });
+  }
+
   public startCombatMusic() {
     if (this.musicInterval) return;
     this.initCtx();
 
-    // 130 BPM synthwave battle rhythm
     const stepIntervalMs = (60 / 130 / 4) * 1000; // 16th notes ~115ms
     const notesBass = [65.41, 65.41, 77.78, 65.41, 87.31, 65.41, 98.00, 87.31]; // C2, Eb2, F2, G2
 

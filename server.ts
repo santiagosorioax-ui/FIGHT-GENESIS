@@ -12,6 +12,8 @@ const server = http.createServer(app);
 const port = Number(process.env.PORT) || 3000;
 
 app.use(express.json());
+app.use('/audio', express.static(path.resolve(__dirname, 'public/audio')));
+app.use(express.static(path.resolve(__dirname, 'public')));
 
 interface PlayerSession {
   ws: WebSocket;

@@ -122,8 +122,8 @@ export const FightHUD: React.FC<FightHUDProps> = ({
             <Pause className="w-3.5 h-3.5 fill-current" />
           </button>
 
-          {/* Digital Timer */}
-          <div className="text-3xl md:text-4xl font-mono font-black text-amber-400/95 tracking-tighter drop-shadow leading-none tabular-nums">
+          {/* Digital Timer matching screenshot */}
+          <div className="text-3xl md:text-4xl font-mono font-black text-cyan-300 drop-shadow leading-none tabular-nums">
             {roundTime < 10 ? `0${roundTime}` : roundTime}
           </div>
 

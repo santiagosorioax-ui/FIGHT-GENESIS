@@ -332,6 +332,22 @@ export default function App() {
     setAppState('FIGHT');
   };
 
+  const handleReturnToTitle = () => {
+    setAppState('TITLE');
+    soundEngine.stopCombatMusic();
+    if (!isMuted) {
+      soundEngine.startJapaneseMenuMusic();
+    }
+  };
+
+  const handleReturnToCharSelect = () => {
+    setAppState('CHAR_SELECT');
+    soundEngine.stopCombatMusic();
+    if (!isMuted) {
+      soundEngine.startJapaneseMenuMusic();
+    }
+  };
+
   const restartFight = () => {
     if (engineRef.current) {
       engineRef.current.currentRound = 1;
@@ -444,8 +460,8 @@ export default function App() {
             <PauseMenu
               onResume={() => setIsPaused(false)}
               onRestart={restartFight}
-              onCharacterSelect={() => setAppState('CHAR_SELECT')}
-              onMainMenu={() => setAppState('TITLE')}
+              onCharacterSelect={handleReturnToCharSelect}
+              onMainMenu={handleReturnToTitle}
               isMuted={isMuted}
               onToggleMute={toggleMute}
             />
@@ -461,8 +477,8 @@ export default function App() {
                 }
                 restartFight();
               }}
-              onCharacterSelect={() => setAppState('CHAR_SELECT')}
-              onMainMenu={() => setAppState('TITLE')}
+              onCharacterSelect={handleReturnToCharSelect}
+              onMainMenu={handleReturnToTitle}
             />
           )}
         </div>

@@ -5,14 +5,14 @@ import kaelenImg from '../assets/images/sf3_fighter_taiga_1790470426540.jpg';
 export const FIGHTERS: FighterStats[] = [
   {
     id: 'kaelen',
-    name: 'KAELEN',
+    name: 'KAELEN VANCE',
     title: 'The Ashen Vanguard',
     faction: 'Legion',
     weaponName: 'Shatterfang Flamberge',
     weaponType: 'Two-Handed Flamberge',
     description: 'A battle-hardened knight of the Iron Bastion. Wields a colossal wavy greatsword with devastating armor-piercing force and unyielding physical poise.',
-    primaryColor: '#B91C1C', // Deep Crimson
-    secondaryColor: '#D97706', // Burnished Brass
+    primaryColor: '#991B1B', // Dark Crimson
+    secondaryColor: '#B45309', // Burnished Brass / Gold
     accentColor: '#06B6D4', // Shadow Cyan
     portraitUrl: kaelenImg,
     maxHealth: 1120,
@@ -147,8 +147,8 @@ export const FIGHTERS: FighterStats[] = [
     weaponName: 'Verdant Tempest Guandao',
     weaponType: 'Guandao / Naginata',
     description: 'A master martial artist of the Jade Dynasty. Fights with fluid polearm katas, acrobatic kicks, and deceptive sweep combos that control the neutral spacing.',
-    primaryColor: '#10B981', // Emerald green
-    secondaryColor: '#EAB308', // Gold
+    primaryColor: '#059669', // Emerald green
+    secondaryColor: '#D97706', // Gold / Bronze
     accentColor: '#06B6D4', // Shadow Cyan
     portraitUrl: renImg,
     maxHealth: 1000,
