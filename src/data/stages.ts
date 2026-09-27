@@ -1,0 +1,226 @@
+import { StageData } from '../types/fighter';
+import courtyardBg from '../assets/images/sf3_temple_courtyard_1790470389380.jpg';
+import dojoBg from '../assets/images/sf3_dynasty_dojo_1790470398939.jpg';
+import fortressBg from '../assets/images/sf3_legion_fortress_1790470408084.jpg';
+
+export const STAGES: StageData[] = [
+  {
+    id: 'pagoda_courtyard',
+    name: 'Jade Pagoda Courtyard',
+    subtitle: 'Bamboo Sanctuary · Whispering Pines',
+    backdropUrl: courtyardBg,
+    skyColor: '#1c2826',
+    groundColor: '#786d5f',
+    ambientLight: '#d1fae5',
+    themeColor: '#10b981',
+    description: 'An ancient stone courtyard flanked by lush bamboo groves, misty lotus ponds, and an ancient pagoda pavilion. Stone lanterns and clay urns shatter upon impact.',
+    props: [
+      {
+        id: 'tc_lantern_l',
+        name: 'Ancient Stone Lantern [L]',
+        x: -5.5,
+        y: 1.5,
+        z: -1.2,
+        width: 1.0,
+        height: 3.0,
+        depth: 1.0,
+        health: 100,
+        maxHealth: 100,
+        broken: false,
+        type: 'lantern',
+        color: '#94a3b8'
+      },
+      {
+        id: 'tc_pottery_l',
+        name: 'Ceramic Urn [L]',
+        x: -2.8,
+        y: 1.0,
+        z: -1.8,
+        width: 0.8,
+        height: 2.0,
+        depth: 0.8,
+        health: 60,
+        maxHealth: 60,
+        broken: false,
+        type: 'pottery',
+        color: '#c2410c'
+      },
+      {
+        id: 'tc_pottery_r',
+        name: 'Ceramic Urn [R]',
+        x: 2.8,
+        y: 1.0,
+        z: -1.8,
+        width: 0.8,
+        height: 2.0,
+        depth: 0.8,
+        health: 60,
+        maxHealth: 60,
+        broken: false,
+        type: 'pottery',
+        color: '#c2410c'
+      },
+      {
+        id: 'tc_lantern_r',
+        name: 'Ancient Stone Lantern [R]',
+        x: 5.5,
+        y: 1.5,
+        z: -1.2,
+        width: 1.0,
+        height: 3.0,
+        depth: 1.0,
+        health: 100,
+        maxHealth: 100,
+        broken: false,
+        type: 'lantern',
+        color: '#94a3b8'
+      },
+      {
+        id: 'tc_gate_l',
+        name: 'Bamboo Boundary Gate [L]',
+        x: -7.5,
+        y: 1.2,
+        z: 0.2,
+        width: 0.7,
+        height: 2.4,
+        depth: 1.8,
+        health: 140,
+        maxHealth: 140,
+        broken: false,
+        type: 'barricade',
+        color: '#a16207'
+      },
+      {
+        id: 'tc_gate_r',
+        name: 'Bamboo Boundary Gate [R]',
+        x: 7.5,
+        y: 1.2,
+        z: 0.2,
+        width: 0.7,
+        height: 2.4,
+        depth: 1.8,
+        health: 140,
+        maxHealth: 140,
+        broken: false,
+        type: 'barricade',
+        color: '#a16207'
+      }
+    ]
+  },
+  {
+    id: 'dynasty_dojo',
+    name: 'Imperial Dragon Dojo',
+    subtitle: 'Grand Throne Hall · Gilded Silk',
+    backdropUrl: dojoBg,
+    skyColor: '#1a0d00',
+    groundColor: '#451a03',
+    ambientLight: '#fed7aa',
+    themeColor: '#f59e0b',
+    description: 'Polished mahogany floors reflecting paper lanterns and silk banners. Carved dragon pillars and wooden folding screens fracture under heavy strikes.',
+    props: [
+      {
+        id: 'dd_pillar_l',
+        name: 'Carved Dragon Pillar [L]',
+        x: -5.2,
+        y: 2.0,
+        z: -1.2,
+        width: 1.1,
+        height: 4.0,
+        depth: 1.1,
+        health: 130,
+        maxHealth: 130,
+        broken: false,
+        type: 'pillar',
+        color: '#78350f'
+      },
+      {
+        id: 'dd_screen',
+        name: 'Silk Shoji Screen',
+        x: 0.0,
+        y: 2.5,
+        z: -2.5,
+        width: 3.2,
+        height: 3.0,
+        depth: 0.2,
+        health: 70,
+        maxHealth: 70,
+        broken: false,
+        type: 'barricade',
+        color: '#fef08a'
+      },
+      {
+        id: 'dd_pillar_r',
+        name: 'Carved Dragon Pillar [R]',
+        x: 5.2,
+        y: 2.0,
+        z: -1.2,
+        width: 1.1,
+        height: 4.0,
+        depth: 1.1,
+        health: 130,
+        maxHealth: 130,
+        broken: false,
+        type: 'pillar',
+        color: '#78350f'
+      }
+    ]
+  },
+  {
+    id: 'iron_bastion',
+    name: 'Iron Bastion Fortress',
+    subtitle: 'Northern Ramparts · Burning Embers',
+    backdropUrl: fortressBg,
+    skyColor: '#0f172a',
+    groundColor: '#334155',
+    ambientLight: '#cbd5e1',
+    themeColor: '#ef4444',
+    description: 'A rugged gothic fortress arena with burning iron braziers and wooden weapon racks that splinter into physical debris when fighters crash into them.',
+    props: [
+      {
+        id: 'lf_rack_l',
+        name: 'Iron Weapon Rack [L]',
+        x: -5.4,
+        y: 1.4,
+        z: -1.2,
+        width: 1.4,
+        height: 2.8,
+        depth: 1.0,
+        health: 90,
+        maxHealth: 90,
+        broken: false,
+        type: 'barricade',
+        color: '#713f12'
+      },
+      {
+        id: 'lf_rack_r',
+        name: 'Iron Weapon Rack [R]',
+        x: 5.4,
+        y: 1.4,
+        z: -1.2,
+        width: 1.4,
+        height: 2.8,
+        depth: 1.0,
+        health: 90,
+        maxHealth: 90,
+        broken: false,
+        type: 'barricade',
+        color: '#713f12'
+      },
+      {
+        id: 'lf_brazier',
+        name: 'Iron Fire Brazier',
+        x: 0.0,
+        y: 1.2,
+        z: -2.2,
+        width: 1.0,
+        height: 2.2,
+        depth: 1.0,
+        health: 110,
+        maxHealth: 110,
+        broken: false,
+        type: 'lantern',
+        color: '#ea580c'
+      }
+    ]
+  }
+];

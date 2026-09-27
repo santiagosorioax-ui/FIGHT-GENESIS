@@ -1,0 +1,6 @@
+{
+  "name": "Fight Genesis",
+  "description": "High-octane PC fighting game featuring deep frame-based combat mechanics, destructible 3D arenas, and online real-time multiplayer.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
